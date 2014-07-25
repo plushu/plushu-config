@@ -6,11 +6,11 @@ if [[ -z $2 ]]; then
   exit 1
 else
   app=$2
-  app_root=$PLUSHU_ROOT/apps/$app
-  env_file=$app_root/config.env
+  app_dir=$PLUSHU_ROOT/apps/$app
+  env_file=$app_dir/config.env
 
   # Check if app exists with the same name
-  if [ ! -d "$app_root" ]; then
+  if [ ! -d "$app_dir" ]; then
     echo "App $app does not exist" >&2
     exit 1
   fi
