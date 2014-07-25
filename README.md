@@ -22,6 +22,19 @@ Usage: `plushu config:set <app> <key>=<value>...`
 
 Sets keys in an app's config to the specified values.
 
+You can import an existing env variable list as a config (a la Heroku's
+`config:push`) by using `config:set` with `xargs`:
+
+```bash
+$ xargs plushu config:set example < .env
+```
+
+(Here, `plushu` stands for whatever command you use to run commands on your
+Plushu server: this will likely be a command like `ssh plushu@example.com`,
+if you aren't using an alias or a utility like [pluchu][].)
+
+[pluchu]: https://github.com/plushu/pluchu
+
 ## config:unset
 
 Usage: `plushu config:unset <app> <key>...`
