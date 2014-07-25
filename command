@@ -5,18 +5,19 @@ if [[ -z $2 ]]; then
   echo "Missing app name" >&2
   exit 1
 else
-  APP=$2
-  ENV_FILE=$PLUSHU_ROOT/apps/$APP/config.env
+  app=$2
+  app_root=$PLUSHU_ROOT/apps/$app
+  env_file=$app_root/config.env
 
   # Check if app exists with the same name
-  if [ ! -d "$PLUSHU_ROOT/apps/$APP" ]; then
-    echo "App $APP does not exist" >&2
+  if [ ! -d "$app_root" ]; then
+    echo "App $app does not exist" >&2
     exit 1
   fi
 
-  if [ ! -f "$ENV_FILE" ]; then
-    touch "$ENV_FILE"
+  if [ ! -f "$env_file" ]; then
+    touch "$env_file"
   fi
 fi
 
-cat "$ENV_FILE"
+cat "$env_file"
