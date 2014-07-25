@@ -60,6 +60,9 @@ for pair in "${pairs[@]}"; do
   printf "$key=%q" "$value" >>"$env_file"
 done
 
-# Restart app with new configuration
-$PLUSHU_ROOT/lib/runhook release "$app"
-$PLUSHU_ROOT/lib/runhook deploy "$app"
+# If there is a build image to base a release on
+if [[ -f "$app_dir/build.iid" ]]; then
+  # Restart app with new configuration
+  $PLUSHU_ROOT/lib/runhook release "$app"
+  $PLUSHU_ROOT/lib/runhook deploy "$app"
+fi
