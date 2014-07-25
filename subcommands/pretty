@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ $PLUSHU_TRACE ]] && set -x
+
+if [[ -z "$2" ]]; then
+  echo "Missing app name" >&2
+  exit 1
+else
+  app=$2
+  app_root=$PLUSHU_ROOT/apps/$app
+  env_file=$app_root/config.env
+
+  # Check if app exists with the same name
+  if [ ! -d "$app_root" ]; then
+    echo "App $app does not exist" >&2
+    exit 1
+  fi
+
+  if [ ! -f "$env_file" ]; then
+    touch "$env_file"
+  fi
+fi
+
+# Get lines of key/value pairs from config.env
+IFS=$'\n' read -d '' -r -a pairs < "$env_file"
+
+# Find the longest key name, for field sizing
+longest=0
+for pair in "${pairs[@]}"; do
+  key=${pair%%=*}
+  if (( ${#key} > $longest )); then
+    longest=${#key}
+  fi
+done
+
+# Construct the format for each key-value pair line
+# (the first field should be as long as the longest key,
+# plus a colon and space)
+format="%-$(($longest + 2))s%s"
+
+# Print colon-and-space-separated pairs
+for pair in "${pairs[@]}"; do
+  printf "$format" "${pair%%=*}:" "${pair#*=}"
+done
