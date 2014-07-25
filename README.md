@@ -41,6 +41,13 @@ Usage: `plushu config:unset <app> <key>...`
 
 Unsets keys in an app's config.
 
+## config:empty
+
+Usage: `plushu config:empty <app>`
+
+Unsets *all* keys in an app's config, reverting it to its initial empty and
+unconfigured state.
+
 ## config:get
 
 Usage: `plushu config:get <app> <key>`
