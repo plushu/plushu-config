@@ -33,6 +33,6 @@ fi
 # If there is a build image to base a release on
 if [[ -f "$app_dir/build.iid" ]]; then
   # Restart app with new configuration
-  $PLUSHU_ROOT/lib/runhook release "$app"
-  $PLUSHU_ROOT/lib/runhook deploy "$app"
+  "$PLUSHU_ROOT/lib/runhook" release-app "$app"
+  "$PLUSHU_ROOT/lib/runhook" deploy-app "$app"
 fi
