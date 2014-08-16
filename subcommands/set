@@ -61,7 +61,7 @@ for pair in "${pairs[@]}"; do
   # To properly *remove* a set pair (allowing it to be specified
   # by an assignment somewhere before the config is executed),
   # use the "unset" subcommand.
-  printf "$key=%q" "$value" >>"$env_file"
+  printf "$key=%q\n" "$value" >>"$env_file"
 done
 
 # If there is a build image to base a release on
