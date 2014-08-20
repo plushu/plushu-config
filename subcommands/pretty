@@ -12,15 +12,16 @@ else
 fi
 
 app_dir=$PLUSHU_ROOT/apps/$app
-env_file=$app_dir/config.env
 
-# Check if app exists with the same name
-if [ ! -d "$app_dir" ]; then
-  echo "App $app does not exist" >&2
+# Check if app exists
+if [[ ! -d "$app_dir" ]]; then
+  echo "App not found: $app" >&2
   exit 1
 fi
 
-if [ ! -f "$env_file" ]; then
+env_file=$app_dir/config.env
+
+if [[ ! -f "$env_file" ]]; then
   touch "$env_file"
 fi
 
