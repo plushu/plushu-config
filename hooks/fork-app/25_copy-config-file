@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -eo pipefail; [[ -n "$PLUSHU_TRACE" ]] && set -x
+
+app_src=$1
+app_dest=$2
+
+cp "$PLUSHU_APPS_DIR/$app_src/config.env" \
+  "$PLUSHU_APPS_DIR/$app_dest/config.env"
