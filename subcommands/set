@@ -30,7 +30,7 @@ if [[ -z "$2" ]]; then
   exit 1
 else
   # Let all arguments from 2 on be key=value pairs to set
-  pairs="${@:2}"
+  pairs=("${@:2}")
 fi
 
 # Parameter validation

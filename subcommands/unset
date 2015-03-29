@@ -30,7 +30,7 @@ if [[ -z "$2" ]]; then
   exit 1
 else
   # Let all arguments from 2 on be keys to unset
-  keys="${@:2}"
+  keys=("${@:2}")
 fi
 
 # Parameter validation
