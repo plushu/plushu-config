@@ -9,4 +9,6 @@ if [ ! -f "$env_file" ]; then
   touch "$env_file"
 fi
 
+printf 'set -a\n\n'
 cat "$env_file"
+printf '\nset +a\n'
